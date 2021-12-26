@@ -1,19 +1,27 @@
 {
-  "name": "motoblog",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "vite --port 8080",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "3.2.25",
-    "vue-router": "4.0.12",
-    "vuex": "4.0.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "2.0.0",
-    "sass": "1.45.1",
-    "vite": "2.7.2"
-  }
+    "name": "motoblog",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "vite --port 8080",
+        "build": "vite build",
+        "preview": "vite preview",
+        "fmt": "prettier --write .",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "vue": "3.2.25",
+        "vue-router": "4.0.12",
+        "vuex": "4.0.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "2.0.0",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.1.4",
+        "prettier": "2.5.1",
+        "sass": "1.45.1",
+        "vite": "2.7.2"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
 }
