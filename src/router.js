@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import NewsView from '/src/features/news/NewsView.vue'
 import PostDetailsView from '/src/features/post-details/PostDetailsView.vue'
 
 const routes = [
-    { path: '/', redirect: '/posts/0082da27-ad07-46ca-a64c-9b1801e17916' },
+    { path: '/', redirect: '/news' },
+    { path: '/news', component: NewsView },
     { path: '/posts/:id', component: PostDetailsView },
 ]
 
