@@ -64,6 +64,8 @@ h1 {
 }
 
 p {
+    margin-top: 1em;
+
     text-align: left;
 
     font-size: 18pt;
