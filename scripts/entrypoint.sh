@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### Inject env vars
-TARGET_PATH=index.html
+TARGET_PATH=/usr/share/nginx/html/index.html
 VARS=$(env | grep VITE_APP_)
 
 CONTENT="    <script type=\"module\">env={"
