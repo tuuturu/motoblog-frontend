@@ -4,7 +4,7 @@
 TARGET_PATH=/usr/share/nginx/html/index.html
 VARS=$(env | grep VITE_APP_)
 
-CONTENT="    <script type=\"module\">env={"
+CONTENT="    <script type=\"module\">window.env={"
 
 for var in ${VARS}
 do
