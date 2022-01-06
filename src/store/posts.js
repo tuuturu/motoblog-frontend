@@ -34,6 +34,14 @@ const actions = {
 
         commit('posts', data)
     },
+    async fetchDetails({ commit }, postID) {
+        const { data } = await axios.request({
+            url: `/posts/${postID}`,
+            method: 'GET',
+        })
+
+        commit('post', data)
+    },
 }
 
 export default {
