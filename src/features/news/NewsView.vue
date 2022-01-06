@@ -43,10 +43,7 @@ export default {
 function trimText(text) {
     let result = text
 
-    if (text.length > maxLength) {
-        result = text.substring(0, maxLength)
-        result += '..'
-    }
+    result = result.substring(0, result.lastIndexOf(' ')) + '..'
 
     return result
 }
