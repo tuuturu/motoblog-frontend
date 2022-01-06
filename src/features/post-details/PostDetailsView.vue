@@ -62,6 +62,7 @@ h1 {
 }
 
 .date-stamp {
+    margin-top: 6em;
     align-self: flex-end;
 }
 
