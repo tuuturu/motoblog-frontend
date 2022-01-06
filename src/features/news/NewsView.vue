@@ -87,6 +87,7 @@ function byDate(a, b) {
 
 img {
     height: 100%;
+    min-width: 162px;
 }
 
 .content {
