@@ -1,6 +1,6 @@
 <template>
     <div class="PostDetailsView">
-        <div class="content">
+        <div class="content" v-if="postID !== -1">
             <h1>{{ post.title }}</h1>
 
             <span class="date-stamp">{{ dateStamp }}</span>
@@ -33,9 +33,11 @@ export default {
         postID: -1,
     }),
     async created() {
-        await this.$store.dispatch('posts/fetch')
+        const id = this.$route.params.id
 
-        this.postID = this.$route.params.id
+        await this.$store.dispatch('posts/fetchDetails', id)
+
+        this.postID = id
     },
 }
 </script>
