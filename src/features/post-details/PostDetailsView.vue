@@ -5,13 +5,14 @@
 
             <span class="date-stamp">{{ dateStamp }}</span>
 
-            <p>{{ post.content }}</p>
+            <div class="post-content" v-html="content"></div>
         </div>
     </div>
 </template>
 
 <script>
 import { monthAsHuman } from './dates.js'
+import { marked } from 'marked'
 
 export default {
     name: 'PostDetailsView',
@@ -27,6 +28,9 @@ export default {
             const day = time.getDate()
 
             return `${day}. ${month} ${year}`
+        },
+        content() {
+            return marked.parse(this.post.content)
         },
     },
     data: () => ({
@@ -66,7 +70,7 @@ h1 {
     align-self: flex-end;
 }
 
-p {
+.post-content {
     margin-top: 1em;
 
     text-align: left;
