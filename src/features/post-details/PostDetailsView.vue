@@ -11,14 +11,18 @@
 </template>
 
 <script>
-import { monthAsHuman } from './dates.js'
 import { marked } from 'marked'
+
+import { injectImages } from './helpers.js'
+import { monthAsHuman } from './dates.js'
 
 export default {
     name: 'PostDetailsView',
     computed: {
         post() {
-            return this.$store.state['posts'].posts.find(p => p.id === this.postID)
+            let post = this.$store.state['posts'].posts.find(p => p.id === this.postID)
+
+            return post
         },
         dateStamp() {
             const time = new Date(this.post.time)
@@ -30,7 +34,11 @@ export default {
             return `${day}. ${month} ${year}`
         },
         content() {
-            return marked.parse(this.post.content)
+            let html = marked.parse(this.post.content)
+
+            html = injectImages(html, this.post.images)
+
+            return html
         },
     },
     data: () => ({
@@ -71,6 +79,9 @@ h1 {
 }
 
 .post-content {
+    display: flex;
+    flex-direction: column;
+
     margin-top: 1em;
 
     text-align: left;
