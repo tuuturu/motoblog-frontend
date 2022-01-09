@@ -3,6 +3,8 @@
         <div class="content" v-if="postID !== -1">
             <h1>{{ post.title }}</h1>
 
+            <Map v-if="coordinates" :coordinates="coordinates" />
+
             <span class="date-stamp">{{ dateStamp }}</span>
 
             <div class="post-content" v-html="content"></div>
@@ -13,11 +15,16 @@
 <script>
 import { marked } from 'marked'
 
+import Map from './Map.vue'
+
 import { injectImages } from './helpers.js'
 import { monthAsHuman } from './dates.js'
 
 export default {
     name: 'PostDetailsView',
+    components: {
+        Map,
+    },
     computed: {
         post() {
             let post = this.$store.state['posts'].posts.find(p => p.id === this.postID)
@@ -39,6 +46,13 @@ export default {
             html = injectImages(html, this.post.images)
 
             return html
+        },
+        coordinates() {
+            const coords = this.post.coordinates
+
+            if (!coords || coords.length === 0) return null
+
+            return coords
         },
     },
     data: () => ({
@@ -74,7 +88,7 @@ h1 {
 }
 
 .date-stamp {
-    margin-top: 6em;
+    margin-top: 4em;
     align-self: flex-end;
 }
 
@@ -88,5 +102,9 @@ h1 {
 
     font-size: 18pt;
     line-height: 2em;
+}
+
+.Map {
+    height: 248px;
 }
 </style>
