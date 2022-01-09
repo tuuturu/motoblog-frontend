@@ -28,7 +28,7 @@ export default {
     name: 'Map',
     props: {
         coordinates: {
-            type: Array,
+            type: Object,
             required: true,
         },
     },
@@ -48,8 +48,12 @@ export default {
         this.map = L.map('map')
         this.map.addLayer(TILE_LAYER)
 
-        this.addMarker(this.coordinates)
+        this.addMarker(parseCoordinates(this.coordinates))
     },
+}
+
+function parseCoordinates(rawCoords) {
+    return [rawCoords.latitude, rawCoords.longitude]
 }
 </script>
 
