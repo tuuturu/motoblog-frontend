@@ -13,7 +13,9 @@
                     <img src="https://via.placeholder.com/300x300" />
 
                     <div class="content">
-                        <h2>{{ post.title }}</h2>
+                        <a :href="`/posts/${post.id}`">
+                            <h2>{{ post.title }}</h2>
+                        </a>
                         <p>{{ trimText(post.content) }}</p>
                     </div>
                 </li>
@@ -92,5 +94,10 @@ img {
 
 .content {
     margin-left: 1em;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
 }
 </style>
