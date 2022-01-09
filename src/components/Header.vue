@@ -1,6 +1,6 @@
 <template>
     <div class="Header">
-        <span>Motoblog</span>
+        <a href="/">Motoblog</a>
     </div>
 </template>
 
@@ -22,5 +22,10 @@ export default {
     color: $primary-text-color;
 
     font-weight: bold;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
 }
 </style>
