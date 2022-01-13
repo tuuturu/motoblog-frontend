@@ -10,7 +10,7 @@
                     :key="post.id"
                     @click="$router.push(`/posts/${post.id}`)"
                 >
-                    <img src="https://via.placeholder.com/300x300" />
+                    <img alt="First image from the trip" :src="ensureImage(post.images)" />
 
                     <div class="content">
                         <a :href="`/posts/${post.id}`">
@@ -36,6 +36,7 @@ export default {
     },
     methods: {
         trimText,
+        ensureImage,
     },
     async created() {
         await this.$store.dispatch('posts/fetch')
@@ -52,6 +53,12 @@ function trimText(text) {
 
 function byDate(a, b) {
     return a.time < b.time
+}
+
+function ensureImage(images) {
+    if (!images || images.length === 0) return 'https://via.placeholder.com/300x300'
+
+    return images[0]
 }
 </script>
 
